@@ -13,13 +13,13 @@ public class Funcionario{
         this.nome = nome;
         this.estadoCivil = estadoCivil;
         this.CPF = CPF;
-        this.matricula = (int) Math.random()*100+1;
+        this.matricula = (int) (Math.random()*1000)+1;
     }
     public Funcionario(String nome, String estadoCivil, int CPF,Dependente dependente) {
         this.nome = nome;
         this.estadoCivil = estadoCivil;
         this.CPF = CPF;
-        this.matricula = (int) Math.random()*100+1;
+        this.matricula = (int) (Math.random()*1000)+1;
         dependenteList.add(dependente);
     }
 
