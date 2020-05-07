@@ -2,8 +2,7 @@ package v2;
 import java.util.*;
 import javax.swing.*;
 public class Programa{
-    static Set<Funcionario> funcionarioList=new HashSet<Funcionario>();
-
+    static List<Funcionario> funcionarioList=new ArrayList<Funcionario>();
     public static void main(String[] args) {
         
         int flag=0;
@@ -53,9 +52,9 @@ public class Programa{
                 break;
 
                 case 2: 
-                    String qualFuncionario=JOptionPane.showInputDialog("Adicionar a qual funcionario:");
+                    int qualFuncionario=Integer.parseInt(JOptionPane.showInputDialog("Adicionar a qual funcionario (CPF):"));
                     for (Funcionario fun : funcionarioList) {
-                        if(fun.nome==qualFuncionario){
+                        if(fun.CPF==qualFuncionario){
                             String nomeDependente=JOptionPane.showInputDialog("Nome do dependente:");
                             String parentesco=JOptionPane.showInputDialog("Parentesco:");
                             String nascimento=JOptionPane.showInputDialog("Data de nascimento (dd/MM/yyyy):");
@@ -78,10 +77,13 @@ public class Programa{
                 case 4:
                 String allDeps="";
                 int qualCPF=Integer.parseInt(JOptionPane.showInputDialog("Exibir os dependentes de qual funcionario(cpf):"));
+                    
                     for (Funcionario fun : funcionarioList) {
                         if(fun.CPF==qualCPF){
                             for (Dependente dep : fun.dependenteList) {
-                                allDeps=allDeps+dep.nome+",";
+                                if (dep!=null){
+                                    allDeps=allDeps+dep.nome+",";
+                                }
                             }
                         }
                     }
@@ -90,18 +92,19 @@ public class Programa{
                 break;
                 
                 case 5:
-                    int cpfFuncionario=Integer.parseInt(JOptionPane.showInputDialog("CPF do funcionário para remoção de dependente:"));
-                    String nomeDependente=JOptionPane.showInputDialog("Nome do dependente:");
-                    for ( Funcionario fun : funcionarioList) {
-                        if(fun.CPF==cpfFuncionario){
-                            for (Dependente dep : fun.dependenteList) {
-                                if(dep.nome==nomeDependente){
-                                    fun.dependenteList.remove(nomeDependente);
+                    int cpfRemocao=Integer.parseInt(JOptionPane.showInputDialog("CPF do funcionário para remoção de dependente:"));
+                    String dependenteRemocao=JOptionPane.showInputDialog("Nome do dependente:");
+                    for (Funcionario funcionario : funcionarioList) {
+                        if(funcionario.CPF==cpfRemocao){
+                            for (Dependente depe : funcionario.dependenteList) {
+                                if(depe.nome.contains(dependenteRemocao)){
+                                    depe=null;
                                 }
                             }
                         }
                     }
                     flag=0;
+                    
                 break;
             }
         }
@@ -116,7 +119,7 @@ public class Programa{
     }
     public static boolean verificaDuplicataFuncionario(int cpf,String nomeDependente){
         for (Funcionario fun : Programa.funcionarioList) {
-            if(cpf==membro.CPF){
+            if(cpf==fun.CPF){
                for (Dependente dep : fun.dependenteList) {
                     if(dep.nome==nomeDependente){
                         return true;
