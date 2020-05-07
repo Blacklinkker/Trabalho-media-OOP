@@ -2,7 +2,7 @@ package v2;
 import java.util.*;
 import javax.swing.*;
 public class Programa{
-    static List<Funcionario> funcionario=new ArrayList<Funcionario>();
+    static Set<Funcionario> funcionario=new HashSet<Funcionario>();
 
     public static void main(String[] args) {
         
@@ -23,7 +23,7 @@ public class Programa{
                     String nome=JOptionPane.showInputDialog("Nome do funcionario:");
                     String estadoCivil=JOptionPane.showInputDialog("Estado civil: ");
                     int CPF=Integer.parseInt(JOptionPane.showInputDialog("CPF:"));
-
+                    igual=funcionario.verificaDuplicata(cpf);
                     String dependentesString= JOptionPane.showInputDialog("Possui dependentes (s/n)?: ");
                     char possuiDependentes=dependentesString.charAt(0);
                     if(possuiDependentes == 's' || possuiDependentes=='S'){
@@ -57,5 +57,14 @@ public class Programa{
                 break;
             }
         }
+    }
+    public static boolean verificaDuplicata(int cpf){
+        for (Funcionario membro : Programa.funcionario) {
+            if(cpf==membro.CPF){
+                JOptionPane.showMessageDialog(null,"Funcionario já cadastrado, operação cancelada");
+                return true;
+            }
+        }
+        return false;
     }
 }
