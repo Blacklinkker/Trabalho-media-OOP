@@ -1,4 +1,3 @@
-package v2;
 import javax.swing.*;
 import java.util.*;
 public class Funcionario{

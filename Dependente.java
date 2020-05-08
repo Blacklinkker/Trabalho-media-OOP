@@ -1,4 +1,3 @@
-package v2;
 public class Dependente {
     String nome;
     String parentesco;
