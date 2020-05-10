@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.util.*;
 public class Funcionario{
     String nome;
@@ -18,7 +17,7 @@ public class Funcionario{
         this.nome = nome;
         this.estadoCivil = estadoCivil;
         this.CPF = CPF;
-        this.matricula = (int) (Math.random()*1000)+1;
+        this.matricula = (int) (Math.random() * ((9-2)+2) * 10000)+1;
         dependenteList.add(dependente);
     }
 

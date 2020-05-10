@@ -9,7 +9,7 @@ public class Programa{
             switch (flag) {
                 case 0:
                     flag=Integer.parseInt(JOptionPane.showInputDialog("Qual operação desejada?"
-                    + "\n  1-Adicionar funcionário"
+                    + "\n 1-Adicionar funcionário"
                     +"\n 2-Adicionar dependente a funcionário "
                     +"\n 3-Exibir todos os funcionários  "
                     +"\n 4-Exibir todos os dependentes de um funcionário" 
@@ -32,14 +32,13 @@ public class Programa{
                             if(!igualDep){
                                 Dependente dependente=new Dependente(nomeDependente, parentesco, nascimento);
                                 funcionario.add(new Funcionario(nome,estadoCivil,CPF,dependente));
+                                JOptionPane.showMessageDialog(null,"Funcionário "+nome+" cadastrado com sucesso");
                             }else if(igualDep){
                                 JOptionPane.showMessageDialog(null, "Operação cancelada, dependente já registrado");
                             }
-                            
-                            
-                            
                         }else if(possuiDependentes == 'n' || possuiDependentes == 'N'){
                             funcionario.add(new Funcionario(nome, estadoCivil, CPF));
+                            JOptionPane.showMessageDialog(null,"Funcionário "+nome+" cadastrado com sucesso");
                         }
                         
                     }else if(igual){
@@ -57,8 +56,14 @@ public class Programa{
                             String nomeDependente=JOptionPane.showInputDialog("Nome do dependente:");
                             String parentesco=JOptionPane.showInputDialog("Parentesco:");
                             String nascimento=JOptionPane.showInputDialog("Data de nascimento (dd/MM/yyyy):");
-                            Dependente dependente=new Dependente(nomeDependente, parentesco, nascimento);
-                            fun.dependenteList.add(dependente);
+                            boolean igualDep=verificaDuplicataFuncionario(fun.CPF,nomeDependente);
+                            if(!igualDep){
+                                Dependente dependente=new Dependente(nomeDependente, parentesco, nascimento);
+                                fun.dependenteList.add(dependente);
+                            }else{
+                                JOptionPane.showMessageDialog(null,"operação cancelada,dependente já registrado");
+                            }
+                            
                         }
                     }
                     flag=0;
@@ -67,7 +72,7 @@ public class Programa{
                 case 3:
                 String allFuncs="";
                 for ( Funcionario fun : funcionario) {
-                    allFuncs=allFuncs+fun.nome+"("+fun.matricula+")"+",";
+                    allFuncs=allFuncs+fun.nome+" ("+fun.matricula+")"+",";
                 }
                 JOptionPane.showMessageDialog(null, allFuncs);
                     flag=0;
