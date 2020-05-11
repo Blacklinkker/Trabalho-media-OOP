@@ -2,7 +2,7 @@ import java.util.*;
 import javax.swing.*;
 public class Programa{
     static List<Funcionario> funcionario=new ArrayList<Funcionario>();
-        public static void main(String[] args) {
+    public static void main(String[] args) {
         
         int flag=0;
         while(flag<6){
@@ -13,7 +13,8 @@ public class Programa{
                     +"\n 2-Adicionar dependente a funcionário "
                     +"\n 3-Exibir todos os funcionários  "
                     +"\n 4-Exibir todos os dependentes de um funcionário" 
-                    +"\n 5-Remover dependente"));
+                    +"\n 5-Remover dependente"
+                    +"\n 6-Sair"));
                 break;
                 
                 case 1: 
@@ -96,14 +97,16 @@ public class Programa{
                 break;
                 
                 case 5:
-                    qualFuncionario=Integer.parseInt(JOptionPane.showInputDialog("Remover de qual funcionario (CPF):"));
+                    int cpfRemocao=Integer.parseInt(JOptionPane.showInputDialog("Remover de qual funcionario (CPF):"));
                     String dependenteARemover=JOptionPane.showInputDialog("Nome do dependente: ");
                     for (Funcionario fun : funcionario) {
-                        Iterator<Dependente> iter =  fun.dependenteList.iterator();
-                        while(iter.hasNext()) {
-                            Dependente dep = iter.next();
-                            if(dep.nome.equals(dependenteARemover)) {
-                                iter.remove();
+                        if(fun.CPF==cpfRemocao){
+                            Iterator<Dependente> iter =  fun.dependenteList.iterator();
+                            while(iter.hasNext()) {
+                                Dependente dep = iter.next();
+                                if(dep.nome.equals(dependenteARemover)) {
+                                    iter.remove();
+                                }
                             }
                         }
                     }
