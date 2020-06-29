@@ -6,7 +6,7 @@ public class Funcionario{
     protected int matricula;
     List<Dependente> dependenteList=new ArrayList<Dependente>();
     
-
+ 
     public Funcionario(String nome, String estadoCivil, int CPF) {
         this.nome = nome;
         this.estadoCivil = estadoCivil;
