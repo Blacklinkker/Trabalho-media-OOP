@@ -5,7 +5,6 @@ public class Funcionario{
     int CPF;
     protected int matricula;
     List<Dependente> dependenteList=new ArrayList<Dependente>();
-    
  
     public Funcionario(String nome, String estadoCivil, int CPF) {
         this.nome = nome;
@@ -13,6 +12,7 @@ public class Funcionario{
         this.CPF = CPF;
         this.matricula = (int) (Math.random()*1000)+1;
     }
+    
     public Funcionario(String nome, String estadoCivil, int CPF,Dependente dependente) {
         this.nome = nome;
         this.estadoCivil = estadoCivil;
@@ -20,13 +20,8 @@ public class Funcionario{
         this.matricula = (int) (Math.random() * ((9-2)+2) * 10000)+1;
         dependenteList.add(dependente);
     }
-
-    
     
     public int getMatricula() {
         return matricula;
     }
-    
-    
-    
 }
