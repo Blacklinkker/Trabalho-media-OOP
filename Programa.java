@@ -72,6 +72,7 @@ public class Programa{
         }else if(verificaDuplicataFuncionario(CPF)){
             return "Operação cancelada, funcionario já registrado";
         }
+
         return null;
     }
 
@@ -84,6 +85,7 @@ public class Programa{
 
             return new Dependente(nomeDependente, parentescoDependente, nascimentoDependente);
         }
+
         return null;
     }
 
@@ -106,6 +108,7 @@ public class Programa{
         for ( Funcionario fun : funcionarios) {
             allFuncs = allFuncs+fun.getNome()+" ("+fun.getMatricula()+")"+",";
         }
+
         return allFuncs;
     }
 
@@ -122,6 +125,7 @@ public class Programa{
                 }
             }
         }
+
         return "Exibindo dependentes do funcionário selecionado: \n"+allDeps;
     }
 
@@ -141,6 +145,7 @@ public class Programa{
                 }
             }
         }
+
         return null;
     }
 
@@ -150,6 +155,7 @@ public class Programa{
                 return true;
             }
         }
+
         return false;
     }
 
@@ -163,6 +169,7 @@ public class Programa{
                }
             }
         }
+        
         return false;
     } 
 }
