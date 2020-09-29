@@ -19,7 +19,7 @@ public class Programa{
                 
                 case 1: 
                     String result = addFuncionario();
-                    JOptionPane.showMessageDialog(null ,result);
+                    JOptionPane.showMessageDialog(null, result);
                     flag = 0;
                 break;
 
@@ -63,6 +63,7 @@ public class Programa{
             
             if(possuiDependentes == 's' || possuiDependentes == 'S'){
                 novoFuncionario.addDependente(createDependente(novoFuncionario));
+                funcionarios.add(novoFuncionario);
                 return "Funcionário " + novoFuncionario.getNome() + " cadastrado com dependente!";
             }else if(possuiDependentes == 'n' || possuiDependentes == 'N'){
                 funcionarios.add(novoFuncionario);
@@ -92,9 +93,11 @@ public class Programa{
         for (Funcionario fun : funcionarios) {
             if(fun.getCPF() == qualFuncionario){
                 fun.addDependente(createDependente(fun));
+                return "Dependente adicionado com sucesso!";
             }
-        }
-        return null;
+        } 
+
+        return "CPF não encontrado";
     }
 
     public static String showFuncionarios(){
@@ -140,7 +143,6 @@ public class Programa{
         }
         return null;
     }
-
 
     public static boolean verificaDuplicataFuncionario(int cpf){
         for (Funcionario membro : Programa.funcionarios) {
